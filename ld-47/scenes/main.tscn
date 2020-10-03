@@ -11,6 +11,10 @@ position = Vector2( 200, 200 )
 rotation = -3.30042
 
 [node name="DebugMenu" parent="." instance=ExtResource( 3 )]
+margin_left = 846.983
+margin_top = 402.007
+margin_right = 1038.98
+margin_bottom = 594.007
 
 [node name="TargetSpawner" type="Node" parent="."]
 script = ExtResource( 2 )
