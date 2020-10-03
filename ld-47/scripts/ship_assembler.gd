@@ -16,30 +16,68 @@ var modules
 var enabledTopModules
 var enabledBottomModules
 
+export(Array, bool) var moduleFlags
+
+var topModuleFlags = [false,false]
+var bottomModuleFlags = [false,false]
+
 func _ready():
 	top = $Top 
 	bottom = $Bottom 
 	
 	#should probably only contain preloads
 	modules = [preload("res://scenes/test_module.tscn").instance(),
-					preload("res://scenes/test_module2.tscn").instance()]
-	add_child(modules[0])
-	add_child(modules[1])
-	print(modules[0].pixelHeight)
-	modules[0].position = position
-	#topModules.append (preload("res://scenes/test_module.tscn"))
+			preload("res://scenes/test_module2.tscn").instance()]
 	
-	enabledTopModules = modules
-	enabledBottomModules = []
+	for module in modules:
+		add_child(module)
+		module.position.x = 0
+		module.position.y = 0
+		
+
 	reassemble()
 
-#func addModule(sModuleScene):
-	#var moduleScene = preload(sModuleScene)
-	#var newModule = moduleScene.instance()
+func setModuleTop(i,b):
+	topModuleFlags[i] = b
+	reassemble()
+func setModuleBottom(i,b):
+	bottomModuleFlags[i] = b
+	reassemble()
+
+func get_input():
+	if Input.is_action_pressed("module_debug"):
+		setModuleTop(1,true)
+		print("asdasd")
+		
+func _physics_process(delta):
+	get_input()
 	
+func comeBack(thing,b):
+	thing.set_process(b)
+	thing.visible = b
+	thing.position.x = 0
+	thing.position.y = 0
 
 	
 func reassemble():
+	enabledBottomModules = []
+	enabledTopModules = []
+	
+	moduleFlags.resize (len(modules))
+	for i in range(len(modules)):
+		comeBack(modules[i],false)
+		moduleFlags[i] = false
+		
+		if topModuleFlags[i]:
+			comeBack(modules[i],true)
+			enabledTopModules.append(modules[i])
+			moduleFlags[i] = true
+			
+		if bottomModuleFlags[i]:
+			comeBack(modules[i],true)
+			enabledBottomModules.append(modules[i])
+			moduleFlags[i] = true
+		
 	
 	var current = 17/2
 	for bottomModule in enabledBottomModules:
@@ -56,7 +94,3 @@ func reassemble():
 		current-=topModule.pixelHeight/2
 	top.position.y = -scalingFactor * (4 - current)
 	
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
