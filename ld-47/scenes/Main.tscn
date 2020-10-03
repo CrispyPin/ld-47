@@ -13,8 +13,8 @@
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 200, 200 )
-rotation = -4.78744
+rotation = -3.30042
+bGrapple = null
+speed = null
 
 [node name="TargetSpawner" parent="." instance=ExtResource( 3 )]
-max_dist = 256
-min_dist = 64
