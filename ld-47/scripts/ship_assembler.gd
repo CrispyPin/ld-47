@@ -21,15 +21,15 @@ func _ready():
 	bottom = $Bottom 
 	
 	#should probably only contain preloads
-	topModules = [preload("res://scenes/test_module.tscn").instance(),
+	modules = [preload("res://scenes/test_module.tscn").instance(),
 					preload("res://scenes/test_module2.tscn").instance()]
-	add_child(topModules[0])
-	add_child(topModules[1])
-	print(topModules[0].pixelHeight)
-	topModules[0].position = position
+	add_child(modules[0])
+	add_child(modules[1])
+	print(modules[0].pixelHeight)
+	modules[0].position = position
 	#topModules.append (preload("res://scenes/test_module.tscn"))
 	
-	enabledTopModules = topModules
+	enabledTopModules = modules
 	enabledBottomModules = []
 	reassemble()
 
