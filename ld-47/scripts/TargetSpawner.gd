@@ -20,8 +20,9 @@ func _ready():
 func spawn_first():
 	var new_target = target_scene.instance()
 	new_target.position.y = 0#-generate_ahead
-	new_target.position.x = randi() % track_width
+	new_target.position.x = 0#randi() % track_width
 	targets.append(new_target)
+	add_child(new_target)
 	new_dist()
 
 func _process(_delta):
@@ -34,6 +35,7 @@ func spawn_target():
 	new_target.position.y = targets[-1].position.y - next_dist
 	new_target.position.x = randi() % track_width
 	targets.append(new_target)
+	add_child(new_target)
 	new_dist()
 
 func new_dist():
