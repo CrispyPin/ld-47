@@ -1,20 +1,18 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=1]
-[ext_resource path="res://scripts/TargetSpawner.gd" type="Script" id=2]
-[ext_resource path="res://scenes/DebugMenu.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/TargetSpawner.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/Camera.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/Background.tscn" type="PackedScene" id=5]
 
 [node name="GameScene" type="Node"]
+
+[node name="Camera2D" parent="." instance=ExtResource( 4 )]
+
+[node name="Background" parent="." instance=ExtResource( 5 )]
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 200, 200 )
 rotation = -3.30042
 
-[node name="DebugMenu" parent="." instance=ExtResource( 3 )]
-margin_left = 846.983
-margin_top = 402.007
-margin_right = 1038.98
-margin_bottom = 594.007
-
-[node name="TargetSpawner" type="Node" parent="."]
-script = ExtResource( 2 )
+[node name="TargetSpawner" parent="." instance=ExtResource( 3 )]
