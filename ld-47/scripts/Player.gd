@@ -11,10 +11,10 @@ var vecGrapplePoint = Vector2()
 #var vecNextGrapplePoint = Vector2()
 
 # is grapple currenly active, is it grabbing anything = is ship "orbiting"
-export (bool) var bGrapple = false 
+export (bool) var bGrapple = false
 
 # grab next node when in correct position?
-var bReGrab = false 
+var bReGrab = false
 var fGrappleDist = 0
 export (int) var speed = 200
 #rotation = 3.1415
@@ -41,7 +41,7 @@ func get_input():
 	#    velocity = Vector2(-speed, 0).rotated(rotation)
 	#if Input.is_action_pressed('up'):
 	#    velocity = Vector2(speed, 0).rotated(rotation)
-	
+
 
 #todo: some dist check/ snap
 func addGrapple(pos):
@@ -62,9 +62,9 @@ func _physics_process(delta):
 	var rotation_speed = 1;
 
 	#rotation += rotation_speed * delta
-		
+
 	var diff = 0;
-	
+
 	if bReGrab:
 		#do checks for grapple
 		#if dot>0 activateGrapple()
@@ -73,31 +73,31 @@ func _physics_process(delta):
 	if bGrapple:
 		#grapple stuff???
 		#|| = constant
-		
+
 		position-=vecGrapplePoint
 		position = position.clamped(fGrappleDist)
 		position+=vecGrapplePoint
-		
+
 		var newRotation = velocity.project(vecGrapplePoint-position).rotated(PI/2).angle()
-		
+
 		if Vector2(1,0).rotated(newRotation).dot(Vector2(1,0).rotated(rotation))<0:
 			newRotation+=PI
 		rotation = newRotation
-		
+
 		#var arrNewShipAngles = (vecGrapplePoint-position).angle() + PI/2
 		#arrNewShipAngles.append(arrNewShipAngles[0]+PI)
 		#arrNewShipAngles.append(arrNewShipAngles[0]-PI)
-		
+
 		#var diff = PI*2
 		#for ang in arrNewShipAngles:
 		#	diff = min(abs(ang-rotation),diff)
 		#for ang in arrNewShipAngles:
-			
+
 	#if bGrapple:
 	#	diff = (vecGrapplePoint-position)
 	#	diff = diff.normalized()/(diff.length()*diff.length())
 	#velocity+=delta*diff*100000
-	
+
 	velocity = Vector2(-speed, 0).rotated(rotation)
 	velocity = move_and_slide(velocity)
 
