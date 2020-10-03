@@ -10,11 +10,10 @@
 [node name="Camera2D" parent="." instance=ExtResource( 4 )]
 
 [node name="Background" parent="." instance=ExtResource( 5 )]
+position = Vector2( 652.535, -6.72717 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 200, 200 )
 rotation = -3.30042
-bGrapple = null
-speed = null
 
 [node name="TargetSpawner" parent="." instance=ExtResource( 3 )]
