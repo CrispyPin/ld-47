@@ -19,8 +19,8 @@ func _ready():
 
 func spawn_first():
 	var new_target = target_scene.instance()
-	new_target.position.y = 0#-generate_ahead
-	new_target.position.x = 0#randi() % track_width
+	new_target.position.y = -generate_ahead
+	new_target.position.x = 0
 	targets.append(new_target)
 	add_child(new_target)
 	new_dist()
@@ -28,16 +28,20 @@ func spawn_first():
 func _process(_delta):
 	if targets[-1].position.y - player.position.y < generate_ahead:
 		spawn_target()
+	if player.position.y - targets[0].position.y < -generate_ahead:
+		targets[0].queue_free()
+		targets.remove(0)
 
 
 func spawn_target():
 	var new_target = target_scene.instance()
 	new_target.position.y = targets[-1].position.y - next_dist
-	new_target.position.x = randi() % track_width
+	new_target.position.x = randi() % track_width - track_width/2
 	targets.append(new_target)
 	add_child(new_target)
 	new_dist()
 
 func new_dist():
+	randomize()
 	next_dist = randi() % (max_dist - min_dist) + min_dist
 
