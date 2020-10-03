@@ -17,7 +17,7 @@ shape = SubResource( 1 )
 
 [node name="Node2D" type="Node2D" parent="."]
 rotation = -1.5708
-scale = Vector2( 8, 8 )
+scale = Vector2( 4, 4 )
 script = ExtResource( 5 )
 
 [node name="Top" type="Sprite" parent="Node2D"]
