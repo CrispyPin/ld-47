@@ -30,9 +30,25 @@ var velocity = Vector2()
 
 func get_input():
 	if Input.is_action_pressed("addGrapple"):
-		addGrapple(get_global_mouse_position())
-	
+		var mousePos = get_global_mouse_position()
+		var minDist = mousePos.distance_to(targetSpawner.targets[0].position)
+		var targetPos = targetSpawner.targets[0].position
+		for target in targetSpawner.targets:
+			var dist = mousePos.distance_to(target.position)
+			if dist < minDist:
+				minDist = dist
+				targetPos = target.position
+				
+		addGrapple(targetPos)
 
+	if Input.is_action_pressed("removeGrapple"):
+		removeGrapple()
+		
+
+#todo: some dist check/ snap
+func removeGrapple():
+	bGrapple = false;
+	bReGrab = false;
 
 #todo: some dist check/ snap
 func addGrapple(pos):
