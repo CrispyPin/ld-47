@@ -1,7 +1,7 @@
 extends Node
 
 export var track_width = 1024
-export var generate_ahead = 512
+export var generate_ahead = 1024
 
 export var max_dist = 128
 export var min_dist = 32
