@@ -1,9 +1,9 @@
 extends KinematicBody2D
 
-
-
+#EDITED
+var targetSpawner
 func _ready():
-	pass # Replace with function body.
+	targetSpawner = get_node("../TargetSpawner") 
 
 var rotation_dir = 3.141592
 
@@ -31,16 +31,7 @@ var velocity = Vector2()
 func get_input():
 	if Input.is_action_pressed("addGrapple"):
 		addGrapple(get_global_mouse_position())
-	#rotation_dir = 0
-	#velocity = Vector2()
-	#if Input.is_action_pressed('right'):
-	#    rotation_dir += 1
-	#if Input.is_action_pressed('left'):
-	#    rotation_dir -= 1
-	#if Input.is_action_pressed('down'):
-	#    velocity = Vector2(-speed, 0).rotated(rotation)
-	#if Input.is_action_pressed('up'):
-	#    velocity = Vector2(speed, 0).rotated(rotation)
+	
 
 
 #todo: some dist check/ snap
