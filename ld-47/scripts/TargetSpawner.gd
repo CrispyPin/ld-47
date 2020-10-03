@@ -19,12 +19,12 @@ func _ready():
 
 func spawn_first():
 	var new_target = target_scene.instance()
-	new_target.position.y = -generate_ahead
+	new_target.position.y = 0#-generate_ahead
 	new_target.position.x = randi() % track_width
 	targets.append(new_target)
 	new_dist()
 
-func _process(delta):
+func _process(_delta):
 	if targets[-1].position.y - player.position.y < generate_ahead:
 		spawn_target()
 
