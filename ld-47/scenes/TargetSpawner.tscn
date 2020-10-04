@@ -12,9 +12,11 @@ script = ExtResource( 1 )
 [node name="Asteroids" type="Node" parent="."]
 script = ExtResource( 1 )
 type = 1
-firstPos = Vector2( 10000, 0 )
+firstPos = Vector2( 10000, -400 )
 
 [node name="Fragments" type="Node" parent="."]
 script = ExtResource( 1 )
+max_dist = 300
+min_dist = 50
 type = 2
-firstPos = Vector2( 10000, 0 )
+firstPos = Vector2( 10000, 500 )
