@@ -30,6 +30,10 @@ func spawn():
 	var pos = Vector2()
 	pos.y = get_parent().items[type][-1].position.y - next_dist
 	pos.x = randi() % track_width - track_width/2
+	var prev = get_parent().items[type][-1].position
+	while (pos - prev).length() < 300:
+		pos.x = randi() % track_width - track_width/2
+		
 	get_parent().add(type, pos, Vector2(), 2-type)
 	new_dist()
 
