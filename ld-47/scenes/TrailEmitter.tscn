@@ -49,3 +49,4 @@ points = PoolVector2Array( -0.203156, -0.196098 )
 default_color = Color( 0, 1, 1, 1 )
 gradient = SubResource( 4 )
 script = ExtResource( 2 )
+[connection signal="tree_exiting" from="." to="Line/Line2D" method="_on_TrailEmitter_tree_exiting"]

@@ -6,8 +6,3 @@ export (int) var LineWidth = 10
 func _ready():
 	var line = get_node("Line/Line2D")
 	line.width = LineWidth
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
