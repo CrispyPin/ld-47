@@ -76,7 +76,7 @@ func comeBack(t,b):
 		add_child(t)
 		t.position.x = 0
 		t.position.y = 0
-	else:
+	elif t in get_children():
 		remove_child(t)
 	recComeBack(t,b)
 	t.visible = b
