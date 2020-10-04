@@ -20,6 +20,8 @@ var bTargeting = false
 var fShootWait = 0
 
 func _physics_process(delta):
+	if !TargetAsteroid:
+		bTargeting = false
 	if (!bTargeting):
 		NewTarget()
 		if (TargetAsteroid):
@@ -28,12 +30,10 @@ func _physics_process(delta):
 			
 		get_child(0).rotation = rotation + PI
 	else:
-		
 		get_child(0).rotation = get_angle_to(TargetAsteroid.global_position) + PI/2
 		
 		fShootWait-=delta
 		if fShootWait < 0:
-			if TargetAsteroid:
-				TargetAsteroid.explode()
+			TargetAsteroid.explode()
 			bTargeting = false
 
