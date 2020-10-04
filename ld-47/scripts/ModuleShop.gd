@@ -5,7 +5,7 @@ extends RichTextLabel
 # var a = 2
 # var b = "text"
 
-var resourceAmount = [10,10,10]
+var resourceAmount = [0,0,0]
 
 func addResource(index, amount):
 	resourceAmount[index] += amount
@@ -28,10 +28,10 @@ var moduleIndex = 0
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	text = ""
-	moduleResourceNeeded.append([1,1,1])
-	moduleResourceNeeded.append([0,0,0])
-	moduleResourceNeeded.append([0,0,0])
-	moduleResourceNeeded.append([0,0,0])
+	moduleResourceNeeded.append([10,0,1])#speed
+	moduleResourceNeeded.append([0,0,10])#rcs
+	moduleResourceNeeded.append([10,0,0])#cannon
+	moduleResourceNeeded.append([0,10,0])#shield
 	
 	assembler = get_node("/root/GameScene/Player/Ship_assembler")
 	
