@@ -18,8 +18,8 @@ var enabledBottomModules
 
 export(Array, bool) var moduleFlags
 
-var topModuleFlags = [false,false,false]
-var bottomModuleFlags = [false,false,false]
+var topModuleFlags = [false]
+var bottomModuleFlags = [false]
 
 func _ready():
 	top = $Top 
@@ -29,7 +29,11 @@ func _ready():
 	modules = [preload("res://scenes/ModuleSpeed.tscn").instance(),#0 - speed
 		preload("res://scenes/ModuleRCS.tscn").instance(),#1 - RCS
 		preload("res://scenes/ModuleCannon.tscn").instance()]
+												#3 - sheild
 	
+	topModuleFlags.resize(len(modules))
+	bottomModuleFlags.resize(len(modules))
+
 	for module in modules:
 		
 		add_child(module)
