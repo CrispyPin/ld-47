@@ -19,7 +19,7 @@ func _ready():
 
 func spawn_first():
 	var new_target = target_scene.instance()
-	new_target.position.y = -generate_ahead
+	new_target.position.y = 0#-generate_ahead
 	new_target.position.x = 0
 	targets.append(new_target)
 	add_child(new_target)
