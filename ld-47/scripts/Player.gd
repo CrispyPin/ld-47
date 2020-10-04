@@ -5,13 +5,23 @@ var gameOver = false
 var RCScooldown = 0
 var targetSpawner
 var shipAssembler
+
+var ctrl
+
 func _ready():
+	ctrl = get_node("Node/Control")
 	rng.randomize()
 	targetSpawner = get_node("../TargetSpawner") 
 	shipAssembler = get_node("Ship_assembler")
 	
 	#position.x = 200
 	addGrapple(Vector2())
+	
+	var ctrl = get_node("Control")
+	#ctrl.update()
+	#for i in range(100,100):
+	#	ctrl.draw_circle(Vector2(),i,Color(0.5, 0.5,0.5, 0.5))
+	#ctrl.update()
 
 
 var rotation_dir = 3.141592
@@ -88,9 +98,12 @@ func activateGrapple():
 	bReGrab = false;
 	fGrappleDist = (position-vecGrapplePoint).length()
 
-
+var angleTimer = 0
 
 func _physics_process(delta):
+	angleTimer+=delta
+	
+	ctrl.update()
 	if (!gameOver):
 		get_input()
 		var modFlags = shipAssembler.moduleFlags
@@ -137,3 +150,13 @@ func _physics_process(delta):
 	
 	else:
 		velocity = Vector2()
+
+
+func _on_Control_draw():
+	
+	if bGrapple:
+		ctrl.draw_arc((vecGrapplePoint-global_position).rotated(-rotation), 80, 0, 2*PI, 7, Color(1, 1, 0, 0.3), 2.0, true)
+
+	#for i in range(5,100):
+	#ctrl.draw_circle(Vector2(),i,Color(0.5, 0.5,0.5, 0.5))
+
