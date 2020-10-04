@@ -7,6 +7,7 @@ export var max_dist = 512
 export var min_dist = 128
 
 export var type = 0
+export var firstPos = Vector2()
 
 var player
 
@@ -14,6 +15,7 @@ var next_dist = 0
 
 func _ready():
 	player = get_node("../../Player")
+	get_parent().add(type, firstPos)
 	new_dist()
 
 

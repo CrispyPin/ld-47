@@ -9,18 +9,19 @@ var _target
 var _asteroid
 var _fragment
 
-func _ready():
+func _init():
 	_target = preload("res://scenes/Target.tscn")
 	_asteroid = preload("res://scenes/Asteroid.tscn")
 	_fragment = preload("res://scenes/Fragment.tscn")
-	items[0].append($Targets/StartPlanet)
+
+func _ready():
 	_update_lists()
 
 func _update_lists():
 	targets = items[0]
 	asteroids = items[1]
 	fragments = items[2]
-
+	
 
 func add(type, pos = Vector2(), vel = Vector2()):
 	var new = [_target, _asteroid, _fragment][type].instance()
