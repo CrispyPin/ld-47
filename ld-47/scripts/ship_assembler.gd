@@ -58,7 +58,6 @@ func get_input():
 		setModuleTop(2,flipBit)
 		setModuleTop(3,flipBit)
 		flipBit = !flipBit
-		print("asdasd")
 		
 func _physics_process(delta):
 	get_input()
