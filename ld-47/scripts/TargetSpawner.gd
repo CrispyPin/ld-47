@@ -26,7 +26,7 @@ func spawn_first():
 	new_dist()
 
 func _process(_delta):
-	if targets[-1].position.y - player.position.y < generate_ahead:
+	if player.position.y - targets[-1].position.y < generate_ahead:
 		spawn_target()
 	if player.position.y - targets[0].position.y < -generate_ahead:
 		targets[0].queue_free()
