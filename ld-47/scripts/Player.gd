@@ -1,10 +1,12 @@
 extends KinematicBody2D
 
-#EDITED
+var rng = RandomNumberGenerator.new()
+var gameOver = false
 var RCScooldown = 0
 var targetSpawner
 var shipAssembler
 func _ready():
+	rng.randomize()
 	targetSpawner = get_node("../TargetSpawner") 
 	shipAssembler = get_node("Ship_assembler")
 	
@@ -29,12 +31,26 @@ var speed = FastSpeed
 #rotation = 3.1415
 var velocity = Vector2()
 
-#func get_input():
-	#velocity = Vector2()
-#	pass
-	#velocity = velocity.normalized() * speed
+func game_over():
+	var ass = get_node("Ship_assembler")
+	var assChilds = ass.get_children()
+	
+	for child in assChilds:
+		var rigidbody = RigidBody2D.new()
+		rigidbody.position = child.position
+		rigidbody.gravity_scale = 0
+		rigidbody.angular_velocity = rng.randf_range(-5,5)
+		rigidbody.angular_damp = 0
+		rigidbody.linear_damp = 0
+		ass.remove_child(child)
+		ass.add_child(rigidbody)
+		rigidbody.add_child(child)
+		child.position = Vector2()
+		child.scale = ass.scale
+		rigidbody.linear_velocity = Vector2(rng.randf_range(-100,100),
+											rng.randf_range(-100,100))
+	gameOver = true
 
-# set vars to grab the node when in position
 
 
 func get_input():
@@ -51,6 +67,7 @@ func get_input():
 		addGrapple(targetPos)
 
 	if Input.is_action_pressed("removeGrapple"):
+		game_over()
 		removeGrapple()
 		
 
@@ -74,52 +91,53 @@ func activateGrapple():
 
 
 func _physics_process(delta):
-	get_input()
-	var modFlags = shipAssembler.moduleFlags
-	
-	#SPEED module
-	if modFlags[0]:
-		speed = FastSpeed
-	else:
-		speed = BaseSpeed
+	if (!gameOver):
+		get_input()
+		var modFlags = shipAssembler.moduleFlags
 		
-	#RCS module
-	RCScooldown-=delta
-	if modFlags[1] and RCScooldown<0:
+		#SPEED module
+		if modFlags[0]:
+			speed = FastSpeed
+		else:
+			speed = BaseSpeed
+			
+		#RCS module
+		RCScooldown-=delta
+		if modFlags[1] and RCScooldown<0:
+			
+			if Input.is_action_just_pressed("left"):
+				RCScooldown = 5
+				#position += Vector2(30, 0).rotated(rotation + PI/2)
+				rotation -= PI/8
+			if Input.is_action_just_pressed("right"):
+				RCScooldown = 5
+				#position -= Vector2(30, 0).rotated(rotation + PI/2)
+				rotation += PI/8
 		
-		if Input.is_action_just_pressed("left"):
-			RCScooldown = 5
-			#position += Vector2(30, 0).rotated(rotation + PI/2)
-			rotation -= PI/8
-		if Input.is_action_just_pressed("right"):
-			RCScooldown = 5
-			#position -= Vector2(30, 0).rotated(rotation + PI/2)
-			rotation += PI/8
-	
-	var rotation_speed = 1;
+		var rotation_speed = 1;
 
-	#rotation += rotation_speed * delta
+		#rotation += rotation_speed * delta
 
-	var diff = 0;
+		var diff = 0;
 
-	if bReGrab:
-		#do checks for grapple
-		#if dot>0 activateGrapple()
-		if velocity.dot(vecGrapplePoint-position)<0: #if aligned with grapple point
-			activateGrapple()
-	if bGrapple:
-		#grapple stuff???
-		#|| = constant
+		if bReGrab:
+			#do checks for grapple
+			#if dot>0 activateGrapple()
+			if velocity.dot(vecGrapplePoint-position)<0: #if aligned with grapple point
+				activateGrapple()
+		if bGrapple:
+			#grapple stuff???
+			#|| = constant
 
-		position-=vecGrapplePoint
-		position = position.clamped(fGrappleDist)
-		position+=vecGrapplePoint
+			position-=vecGrapplePoint
+			position = position.clamped(fGrappleDist)
+			position+=vecGrapplePoint
 
-		var newRotation = velocity.project(vecGrapplePoint-position).rotated(PI/2).angle()
+			var newRotation = velocity.project(vecGrapplePoint-position).rotated(PI/2).angle()
 
-		if Vector2(1,0).rotated(newRotation).dot(Vector2(1,0).rotated(rotation))<0:
-			newRotation+=PI
-		rotation = newRotation
+			if Vector2(1,0).rotated(newRotation).dot(Vector2(1,0).rotated(rotation))<0:
+				newRotation+=PI
+			rotation = newRotation
 
 		#var arrNewShipAngles = (vecGrapplePoint-position).angle() + PI/2
 		#arrNewShipAngles.append(arrNewShipAngles[0]+PI)
@@ -135,6 +153,8 @@ func _physics_process(delta):
 	#	diff = diff.normalized()/(diff.length()*diff.length())
 	#velocity+=delta*diff*100000
 
-	velocity = Vector2(-speed, 0).rotated(rotation)
-	velocity = move_and_slide(velocity)
-
+		velocity = Vector2(-speed, 0).rotated(rotation)
+		velocity = move_and_slide(velocity)
+	
+	else:
+		velocity = Vector2()
