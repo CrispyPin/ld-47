@@ -18,10 +18,9 @@ func _on_Area2D_body_entered(body):
 
 func explode():
 	for i in range(3):
-		var next = asteroid.instance()
-		next.position = position
-		next.linear_velocity = Vector2(0, rand_range(100, 500)).rotated(rand_range(0, PI*2))
-		get_parent().add_child(next)
-	get_parent().targets.remove(get_parent().targets.find(self))
-	visible = false
-	$Area2D.queue_free()
+		var vel = Vector2(0, rand_range(100, 500)).rotated(rand_range(0, PI*2))
+		get_parent().get_parent().add(1, position, vel)
+		#get_parent().add_child(next)
+	get_parent().get_parent().remove_instance(0, self)
+	#visible = false
+	#$Area2D.queue_free()
