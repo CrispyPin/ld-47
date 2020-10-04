@@ -113,16 +113,9 @@ func _physics_process(delta):
 				RCScooldown = 5
 				#position -= Vector2(30, 0).rotated(rotation + PI/2)
 				rotation += PI/8
-		
-		var rotation_speed = 1;
-
-		#rotation += rotation_speed * delta
-
-		var diff = 0;
 
 		if bReGrab:
 			#do checks for grapple
-			#if dot>0 activateGrapple()
 			if velocity.dot(vecGrapplePoint-position)<0: #if aligned with grapple point
 				activateGrapple()
 		if bGrapple:
@@ -138,20 +131,6 @@ func _physics_process(delta):
 			if Vector2(1,0).rotated(newRotation).dot(Vector2(1,0).rotated(rotation))<0:
 				newRotation+=PI
 			rotation = newRotation
-
-		#var arrNewShipAngles = (vecGrapplePoint-position).angle() + PI/2
-		#arrNewShipAngles.append(arrNewShipAngles[0]+PI)
-		#arrNewShipAngles.append(arrNewShipAngles[0]-PI)
-
-		#var diff = PI*2
-		#for ang in arrNewShipAngles:
-		#	diff = min(abs(ang-rotation),diff)
-		#for ang in arrNewShipAngles:
-
-	#if bGrapple:
-	#	diff = (vecGrapplePoint-position)
-	#	diff = diff.normalized()/(diff.length()*diff.length())
-	#velocity+=delta*diff*100000
 
 		velocity = Vector2(-speed, 0).rotated(rotation)
 		velocity = move_and_slide(velocity)

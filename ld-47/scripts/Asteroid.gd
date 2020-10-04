@@ -2,7 +2,7 @@ extends RigidBody2D
 
 
 func explode():
-	for i in range(5):
+	for _i in range(5):
 		var vel = Vector2(0, rand_range(100, 500)).rotated(rand_range(0, PI*2))
 		get_parent().get_parent().add(2, position, vel)
 	get_parent().get_parent().remove_instance(1, self)

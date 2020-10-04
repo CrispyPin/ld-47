@@ -68,7 +68,7 @@ func get_input():
 		setModuleTop(3,flipBit)
 		flipBit = !flipBit
 		
-func _physics_process(delta):
+func _physics_process(_delta):
 	get_input()
 	
 func comeBack(t,b):
@@ -76,7 +76,7 @@ func comeBack(t,b):
 		add_child(t)
 		t.position.x = 0
 		t.position.y = 0
-	else:
+	elif t in get_children():
 		remove_child(t)
 	recComeBack(t,b)
 	t.visible = b
