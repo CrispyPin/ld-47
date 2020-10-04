@@ -28,8 +28,9 @@ func _ready():
 	#should probably only contain preloads
 	modules = [preload("res://scenes/ModuleSpeed.tscn").instance(),#0 - speed
 		preload("res://scenes/ModuleRCS.tscn").instance(),#1 - RCS
-		preload("res://scenes/ModuleCannon.tscn").instance()]
-												#3 - sheild
+		preload("res://scenes/ModuleCannon.tscn").instance(),#2 - cannon
+		preload("res://scenes/ModuleShield.tscn").instance()]#3 - sheild
+												
 	
 	topModuleFlags.resize(len(modules))
 	bottomModuleFlags.resize(len(modules))
@@ -53,7 +54,9 @@ var flipBit = false;
 func get_input():
 	if Input.is_action_just_pressed("module_debug"):
 		setModuleBottom(0,flipBit)
-		setModuleTop(1,!flipBit)
+		setModuleTop(1,flipBit)
+		setModuleTop(2,flipBit)
+		setModuleTop(3,flipBit)
 		flipBit = !flipBit
 		print("asdasd")
 		
