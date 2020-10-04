@@ -4,7 +4,7 @@
 [ext_resource path="res://scripts/Target.gd" type="Script" id=2]
 
 [sub_resource type="CircleShape2D" id=1]
-radius = 35.0
+radius = 30.0
 
 [node name="Planet" type="Sprite"]
 scale = Vector2( 2, 2 )
