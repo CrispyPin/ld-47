@@ -5,8 +5,10 @@ extends RichTextLabel
 # var a = 2
 # var b = "text"
 
-var resourceAmount = [0,0,0]
+var resourceAmount = [10,10,10]
 
+func addResource(index, amount):
+	resourceAmount[index] += amount
 
 #0 -resource A
 #1 -resource B
@@ -36,9 +38,34 @@ func _ready():
 
 var bNewModulesAvaliable = false
 
+func updateModuleIndex():
+	var validModuleFound = false
+	for i in range(len(moduleNames)):
+		moduleIndex = (moduleIndex+1)%len(moduleNames)
+		if !assembler.moduleFlags[moduleIndex]:
+			break
+
 func _process(delta):
 	if Input.is_action_just_pressed("Next_shop_item"):
-		moduleIndex = (moduleIndex+1)%len(moduleNames)
+		updateModuleIndex()
+		
+	if Input.is_action_just_pressed("Install_item") and bNewModulesAvaliable:
+		var afford = true
+		for i in range(len(resourceNames)):
+			if moduleResourceNeeded[moduleIndex][i]>resourceAmount[i]:
+				afford = false
+		if afford:
+			if (moduleIndex!=0):
+				assembler.setModuleTop(moduleIndex,true)
+			else:
+				assembler.setModuleBottom(moduleIndex,true)
+				
+			for i in range(len(resourceAmount)):
+				resourceAmount[i]=0
+				pass
+			updateModuleIndex()
+		updateText()
+
 	if (assembler.moduleFlags):#angry optimization noises
 		updateText()
 
@@ -63,7 +90,7 @@ func updateText():
 			text+=" / " + str(moduleResourceNeeded[moduleIndex][i]) 
 		text+=" units\n"
 	
-
+	text+="\nWARNING: Any construction will \ndiscard unused resources"
 	
 
 		
