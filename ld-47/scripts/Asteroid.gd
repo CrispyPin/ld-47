@@ -14,4 +14,5 @@ func _on_Asteroid_body_entered(body):
 		var shipass = body.get_node("Ship_assembler")
 		if !shipass.moduleFlags[3]:
 			body.game_over()
-		explode()
+		call_deferred("explode")
+		#explode()
