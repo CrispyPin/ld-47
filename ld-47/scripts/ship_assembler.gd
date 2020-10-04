@@ -34,7 +34,6 @@ func _ready():
 		add_child(module)
 		module.position.x = 0
 		module.position.y = 0
-		
 
 	reassemble()
 

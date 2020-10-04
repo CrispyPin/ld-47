@@ -6,6 +6,10 @@ var shipAssembler
 func _ready():
 	targetSpawner = get_node("../TargetSpawner") 
 	shipAssembler = get_node("Ship_assembler")
+	
+	#position.x = 100
+	#addGrapple(Vector2())
+
 
 var rotation_dir = 3.141592
 
