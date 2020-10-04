@@ -1,9 +1,9 @@
 [gd_scene load_steps=8 format=2]
 
-[ext_resource path="res://sprites/ship_core.png" type="Texture" id=1]
+[ext_resource path="res://sprites/ship_modules/ship_core.png" type="Texture" id=1]
 [ext_resource path="res://scripts/Player.gd" type="Script" id=2]
-[ext_resource path="res://sprites/ship_back.png" type="Texture" id=3]
-[ext_resource path="res://sprites/ship_front.png" type="Texture" id=4]
+[ext_resource path="res://sprites/ship_modules/ship_back.png" type="Texture" id=3]
+[ext_resource path="res://sprites/ship_modules/ship_front.png" type="Texture" id=4]
 [ext_resource path="res://scripts/ship_assembler.gd" type="Script" id=5]
 [ext_resource path="res://scenes/TrailEmitter.tscn" type="PackedScene" id=6]
 
@@ -34,8 +34,8 @@ texture = ExtResource( 3 )
 
 [node name="TrailEmitter" parent="Ship_assembler/Bottom" instance=ExtResource( 6 )]
 position = Vector2( 3.8, 3.8 )
-LineWidth = 7
+LineWidth = 6
 
 [node name="TrailEmitter2" parent="Ship_assembler/Bottom" instance=ExtResource( 6 )]
 position = Vector2( -3.3, 3.8 )
-LineWidth = 7
+LineWidth = 6

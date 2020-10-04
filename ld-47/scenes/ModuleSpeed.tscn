@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://sprites/module_thrust.png" type="Texture" id=1]
+[ext_resource path="res://sprites/ship_modules/module_thrust.png" type="Texture" id=1]
 [ext_resource path="res://scripts/test_module.gd" type="Script" id=2]
 [ext_resource path="res://scenes/TrailEmitter.tscn" type="PackedScene" id=3]
 
