@@ -13,7 +13,7 @@ func _on_Area2D_body_entered(body):
 		if shipass.moduleFlags[3]:
 			explode()
 		else:
-			pass#body.game_over()
+			body.game_over()
 
 func explode():
 	add_child(asteroid.instance())
