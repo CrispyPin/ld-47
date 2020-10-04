@@ -57,7 +57,6 @@ func comeBack(thing,b):
 	thing.visible = b
 	thing.position.x = 0
 	thing.position.y = 0
-
 	
 func reassemble():
 	enabledBottomModules = []

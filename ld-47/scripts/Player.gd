@@ -16,7 +16,9 @@ export (bool) var bGrapple = false
 # grab next node when in correct position?
 var bReGrab = false
 var fGrappleDist = 0
-export (int) var speed = 200
+export (int) var BaseSpeed = 200
+export (int) var FastSpeed = 400
+var speed = FastSpeed
 #rotation = 3.1415
 var velocity = Vector2()
 

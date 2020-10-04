@@ -13,6 +13,5 @@
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 rotation = 1.5708
-speed = 256
 
 [node name="TargetSpawner" parent="." instance=ExtResource( 3 )]
