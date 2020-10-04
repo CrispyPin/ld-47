@@ -10,8 +10,8 @@ func _ready():
 	targetSpawner = get_node("../TargetSpawner") 
 	shipAssembler = get_node("Ship_assembler")
 	
-	#position.x = 100
-	#addGrapple(Vector2())
+	position.x = 100
+	addGrapple(Vector2())
 
 
 var rotation_dir = 3.141592
@@ -47,8 +47,9 @@ func game_over():
 		rigidbody.add_child(child)
 		child.position = Vector2()
 		child.scale = ass.scale
-		rigidbody.linear_velocity = Vector2(rng.randf_range(-100,100),
-											rng.randf_range(-100,100))
+		rigidbody.linear_velocity = Vector2(rng.randf_range(-1,1),
+											rng.randf_range(-1,1))
+		rigidbody.linear_velocity.clamped(70)
 	gameOver = true
 
 
@@ -67,7 +68,6 @@ func get_input():
 		addGrapple(targetPos)
 
 	if Input.is_action_pressed("removeGrapple"):
-		game_over()
 		removeGrapple()
 		
 
