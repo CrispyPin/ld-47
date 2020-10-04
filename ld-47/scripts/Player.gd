@@ -10,7 +10,7 @@ func _ready():
 	targetSpawner = get_node("../TargetSpawner") 
 	shipAssembler = get_node("Ship_assembler")
 	
-	position.x = 100
+	#position.x = 200
 	addGrapple(Vector2())
 
 
@@ -48,8 +48,8 @@ func game_over():
 		child.position = Vector2()
 		child.scale = ass.scale
 		rigidbody.linear_velocity = Vector2(rng.randf_range(-1,1),
-											rng.randf_range(-1,1))
-		rigidbody.linear_velocity.clamped(70)
+			rng.randf_range(-1,1)).normalized ()*70
+
 	gameOver = true
 
 
