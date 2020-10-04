@@ -1,6 +1,7 @@
 extends KinematicBody2D
 
 #EDITED
+var RCScooldown = 0
 var targetSpawner
 var shipAssembler
 func _ready():
@@ -73,12 +74,28 @@ func activateGrapple():
 
 
 func _physics_process(delta):
-	if shipAssembler.moduleFlags[0]:
+	get_input()
+	var modFlags = shipAssembler.moduleFlags
+	
+	#SPEED module
+	if modFlags[0]:
 		speed = FastSpeed
 	else:
 		speed = BaseSpeed
+		
+	#RCS module
+	RCScooldown-=delta
+	if modFlags[1] and RCScooldown<0:
+		
+		if Input.is_action_just_pressed("left"):
+			RCScooldown = 5
+			#position += Vector2(30, 0).rotated(rotation + PI/2)
+			rotation -= PI/8
+		if Input.is_action_just_pressed("right"):
+			RCScooldown = 5
+			#position -= Vector2(30, 0).rotated(rotation + PI/2)
+			rotation += PI/8
 	
-	get_input()
 	var rotation_speed = 1;
 
 	#rotation += rotation_speed * delta
