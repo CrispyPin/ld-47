@@ -2,8 +2,10 @@ extends KinematicBody2D
 
 #EDITED
 var targetSpawner
+var shipAssembler
 func _ready():
 	targetSpawner = get_node("../TargetSpawner") 
+	shipAssembler = get_node("Ship_assembler")
 
 var rotation_dir = 3.141592
 
@@ -67,6 +69,11 @@ func activateGrapple():
 
 
 func _physics_process(delta):
+	if shipAssembler.moduleFlags[0]:
+		speed = FastSpeed
+	else:
+		speed = BaseSpeed
+	
 	get_input()
 	var rotation_speed = 1;
 

@@ -1,14 +1,11 @@
 extends Node2D
-#SCRIPT FOR NE 
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
+export (int) var LineWidth = 10
 
-export (int) var pixelHeight = 17
 # Called when the node enters the scene tree for the first time.
-#func _ready():
-#	pass # Replace with function body.
+func _ready():
+	var line = get_node("Line/Line2D")
+	line.width = LineWidth
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

@@ -26,10 +26,11 @@ func _ready():
 	bottom = $Bottom 
 	
 	#should probably only contain preloads
-	modules = [preload("res://scenes/test_module.tscn").instance(),
-			preload("res://scenes/test_module2.tscn").instance()]
+	modules = [preload("res://scenes/ModuleSpeed.tscn").instance(),#0 - speed
+			preload("res://scenes/ModuleCannon.tscn").instance()]
 	
 	for module in modules:
+		
 		add_child(module)
 		module.position.x = 0
 		module.position.y = 0
@@ -44,19 +45,37 @@ func setModuleBottom(i,b):
 	bottomModuleFlags[i] = b
 	reassemble()
 
+var flipBit = false;
 func get_input():
-	if Input.is_action_pressed("module_debug"):
-		setModuleTop(1,true)
+	if Input.is_action_just_pressed("module_debug"):
+		setModuleBottom(0,flipBit)
+		setModuleTop(1,!flipBit)
+		flipBit = !flipBit
 		print("asdasd")
 		
 func _physics_process(delta):
 	get_input()
 	
-func comeBack(thing,b):
-	thing.set_process(b)
-	thing.visible = b
-	thing.position.x = 0
-	thing.position.y = 0
+func comeBack(t,b):
+	if b:
+		add_child(t)
+		t.position.x = 0
+		t.position.y = 0
+	else:
+		remove_child(t)
+	recComeBack(t,b)
+	t.visible = b
+
+func recComeBack(t,b):
+	for child in t.get_children ():
+		recComeBack(child,b)
+	SetComeBack(t,b)
+	
+func SetComeBack(t,b):
+	t.set_process(b)
+	t.set_physics_process(b)
+	t.set_pause_mode(b)
+
 	
 func reassemble():
 	enabledBottomModules = []
