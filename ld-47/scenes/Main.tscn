@@ -7,7 +7,7 @@
 
 [node name="GameScene" type="Node"]
 
-[node name="Camera" parent="." instance=ExtResource( 4 )]
+[node name="Camera2D" parent="." instance=ExtResource( 4 )]
 
 [node name="Background" parent="." instance=ExtResource( 5 )]
 

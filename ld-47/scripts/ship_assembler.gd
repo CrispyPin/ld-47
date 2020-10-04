@@ -42,6 +42,15 @@ func _ready():
 		module.position.y = 0
 
 	reassemble()
+	
+func updateModuleFlags():
+	moduleFlags.resize (len(modules))
+	for i in range(len(modules)):
+		moduleFlags[i] = false
+		if topModuleFlags[i]:
+			moduleFlags[i] = true
+		if bottomModuleFlags[i]:
+			moduleFlags[i] = true
 
 func setModuleTop(i,b):
 	topModuleFlags[i] = b
@@ -87,20 +96,17 @@ func reassemble():
 	enabledBottomModules = []
 	enabledTopModules = []
 	
-	moduleFlags.resize (len(modules))
+	updateModuleFlags()
 	for i in range(len(modules)):
 		comeBack(modules[i],false)
-		moduleFlags[i] = false
 		
 		if topModuleFlags[i]:
 			comeBack(modules[i],true)
 			enabledTopModules.append(modules[i])
-			moduleFlags[i] = true
 			
 		if bottomModuleFlags[i]:
 			comeBack(modules[i],true)
 			enabledBottomModules.append(modules[i])
-			moduleFlags[i] = true
 		
 	
 	var current = 17/2
