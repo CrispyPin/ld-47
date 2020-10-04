@@ -23,13 +23,14 @@ func _update_lists():
 	fragments = items[2]
 	
 
-func add(type, pos = Vector2(), vel = Vector2()):
+func add(type, pos = Vector2(), vel = Vector2(), material = 0):
 	var new = [_target, _asteroid, _fragment][type].instance()
 	new.position = pos
 	if new is RigidBody2D:
 		new.linear_velocity = vel
 	items[type].append(new)
 	get_children()[type].add_child(new)
+	new.type = material
 	_update_lists()
 
 func remove_type(type, i=0):
