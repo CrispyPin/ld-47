@@ -8,7 +8,7 @@ var target_pointer
 func _ready():
 	target_pointer = get_node("../..")
 
-func _process(delta):
+func _process(_delta):
 	point = target_pointer.global_position
 	add_point(point)
 	while get_point_count() > l:

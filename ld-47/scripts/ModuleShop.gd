@@ -36,7 +36,7 @@ func _ready():
 
 var bNewModulesAvaliable = false
 
-func _process(delta):
+func _process(_delta):
 	if Input.is_action_just_pressed("Next_shop_item"):
 		moduleIndex = (moduleIndex+1)%len(moduleNames)
 	if (assembler.moduleFlags):#angry optimization noises
