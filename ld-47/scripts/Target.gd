@@ -12,9 +12,9 @@ func _on_Area2D_body_entered(body):
 		var shipass = body.get_node("Ship_assembler")
 		if shipass.moduleFlags[3]:
 			shipass.setModuleTop(3, false)
-			explode()
 		else:
 			body.game_over()
+		explode()
 
 func explode():
 	for i in range(3):
