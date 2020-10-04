@@ -29,8 +29,8 @@ func add(type, pos = Vector2(), vel = Vector2(), material = 0):
 	if new is RigidBody2D:
 		new.linear_velocity = vel
 	items[type].append(new)
-	new.type = material
 	get_children()[type].add_child(new)
+	new.type = material
 	_update_lists()
 
 func remove_type(type, i=0):
