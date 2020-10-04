@@ -1,9 +1,9 @@
 [gd_scene load_steps=8 format=2]
 
-[ext_resource path="res://sprites/ship_core.png" type="Texture" id=1]
+[ext_resource path="res://sprites/ship_modules/ship_core.png" type="Texture" id=1]
 [ext_resource path="res://scripts/Player.gd" type="Script" id=2]
-[ext_resource path="res://sprites/ship_back.png" type="Texture" id=3]
-[ext_resource path="res://sprites/ship_front.png" type="Texture" id=4]
+[ext_resource path="res://sprites/ship_modules/ship_back.png" type="Texture" id=3]
+[ext_resource path="res://sprites/ship_modules/ship_front.png" type="Texture" id=4]
 [ext_resource path="res://scripts/ship_assembler.gd" type="Script" id=5]
 [ext_resource path="res://scenes/TrailEmitter.tscn" type="PackedScene" id=6]
 

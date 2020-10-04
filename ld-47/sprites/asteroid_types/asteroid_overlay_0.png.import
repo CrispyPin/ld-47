@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/module_cannon_arm.png-7696ec7897e04ec1e017b4887865ce18.stex"
+path="res://.import/asteroid_overlay_0.png-e4877606f7e635b1e893e49d99db827c.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/module_cannon_arm.png"
-dest_files=[ "res://.import/module_cannon_arm.png-7696ec7897e04ec1e017b4887865ce18.stex" ]
+source_file="res://sprites/asteroid_types/asteroid_overlay_0.png"
+dest_files=[ "res://.import/asteroid_overlay_0.png-e4877606f7e635b1e893e49d99db827c.stex" ]
 
 [params]
 
