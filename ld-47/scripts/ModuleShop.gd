@@ -92,8 +92,8 @@ func updateText():
 	
 	text = ""
 	if bNewModulesAvaliable:
-		text += "[K] to select, [O] to construct\n"
-		text += "Selected module for construction:\n\n"
+		text += "[Tab]/[K] to select, [Space]/[O] to construct\n\n"
+		text += "Selected module for construction:\n"
 		text += moduleNames[moduleIndex]+"\n\n"
 
 	text += "Avaliable Resources:\n\n"
