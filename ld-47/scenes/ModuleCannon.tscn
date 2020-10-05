@@ -14,4 +14,5 @@ texture = ExtResource( 1 )
 script = ExtResource( 4 )
 
 [node name="Sprite2" type="Sprite" parent="Sprite"]
+z_index = 2
 texture = ExtResource( 3 )
