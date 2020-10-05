@@ -12,7 +12,7 @@
 [node name="Background" parent="." instance=ExtResource( 5 )]
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 128, 0 )
+position = Vector2( 195.654, 1.88776 )
 rotation = 1.5708
 
 [node name="TargetSpawner" parent="." instance=ExtResource( 3 )]
