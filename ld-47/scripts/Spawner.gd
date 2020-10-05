@@ -22,8 +22,6 @@ func _ready():
 func _process(_delta):
 	if player.position.y - get_parent().items[type][-1].position.y < generate_ahead:
 		spawn()
-	#if player.position.y - get_parent().items[type][0].position.y < -generate_ahead:
-	#	get_parent().remove_type(type)
 
 
 func spawn():
