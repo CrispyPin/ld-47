@@ -67,7 +67,9 @@ func _process(delta):
 				assembler.setModuleTop(moduleIndex,true)
 			else:
 				assembler.setModuleBottom(moduleIndex,true)
-				
+			
+			player.health = player.max_health
+			
 			for i in range(len(resourceAmount)):
 				resourceAmount[i]=0
 				pass
