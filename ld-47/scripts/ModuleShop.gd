@@ -67,7 +67,9 @@ func _process(delta):
 				assembler.setModuleTop(moduleIndex,true)
 			else:
 				assembler.setModuleBottom(moduleIndex,true)
-				
+			
+			player.health = player.max_health
+			
 			for i in range(len(resourceAmount)):
 				resourceAmount[i]=0
 				pass
@@ -90,8 +92,8 @@ func updateText():
 	
 	text = ""
 	if bNewModulesAvaliable:
-		text += "[K] to select, [O] to construct\n"
-		text += "Selected module for construction:\n\n"
+		text += "[Tab]/[K] to select, [Space]/[O] to construct\n\n"
+		text += "Selected module for construction:\n"
 		text += moduleNames[moduleIndex]+"\n\n"
 
 	text += "Avaliable Resources:\n\n"

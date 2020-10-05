@@ -58,6 +58,8 @@ func game_over():
 		rigidbody.linear_velocity = Vector2(rng.randf_range(-1,1),
 			rng.randf_range(-1,1)).normalized ()*70
 
+	get_node("../Camera2D/CanvasLayer/GameOver").visible = true
+
 	gameOver = true
 
 
