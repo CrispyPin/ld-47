@@ -9,6 +9,8 @@ var resourceAmount = [0,0,0]
 
 func addResource(index, amount):
 	resourceAmount[index] += amount
+	updateText()
+	text += str(resourceAmount[index])
 
 #0 -resource A
 #1 -resource B
@@ -46,9 +48,13 @@ func updateModuleIndex():
 		if !assembler.moduleFlags[moduleIndex]:
 			break
 
+var bTextInit = false
+
 func _process(delta):
+	
 	if Input.is_action_just_pressed("Next_shop_item"):
 		updateModuleIndex()
+		updateText()
 		
 	if Input.is_action_just_pressed("Install_item") and bNewModulesAvaliable:
 		var afford = true
@@ -67,8 +73,11 @@ func _process(delta):
 			updateModuleIndex()
 		updateText()
 
-	if (assembler.moduleFlags):#angry optimization noises
-		updateText()
+	if !bTextInit:
+		if assembler.moduleFlags:
+			bTextInit = true
+			updateText()
+
 
 func updateText():
 	
