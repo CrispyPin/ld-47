@@ -6,11 +6,10 @@ func _on_Area2D_body_entered(body):
 	if body.name == "Player":
 		var shipass = body.get_node("Ship_assembler")
 		if shipass.moduleFlags[3]:
-			shipass.setModuleTop(3, false)
+			body.change_health(-1)
 		else:
-			body.game_over()
+			body.change_health(-100)
 		call_deferred("explode")
-		#explode()
 
 func explode():
 	for _i in range(3):

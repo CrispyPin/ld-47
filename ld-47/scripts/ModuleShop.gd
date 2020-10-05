@@ -34,6 +34,7 @@ func _ready():
 	moduleResourceNeeded.append([0,10,0])#shield
 	
 	assembler = get_node("/root/GameScene/Player/Ship_assembler")
+	player = assembler.get_parent()
 	
 
 var bNewModulesAvaliable = false
@@ -91,9 +92,4 @@ func updateText():
 		text+=" units\n"
 	
 	text+="\nWARNING: Any construction will \ndiscard unused resources"
-	
-
-		
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+	text += "\n\nShip Health: " + str(player.health)

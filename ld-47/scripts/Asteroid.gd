@@ -13,6 +13,6 @@ func _on_Asteroid_body_entered(body):
 	if body.name == "Player":
 		var shipass = body.get_node("Ship_assembler")
 		if !shipass.moduleFlags[3]:
-			body.game_over()
+			body.change_health(-1)
 		call_deferred("explode")
 		#explode()
