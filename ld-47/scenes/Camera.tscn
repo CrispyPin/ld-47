@@ -39,8 +39,8 @@ __meta__ = {
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer"]
-margin_right = 388.0
-margin_bottom = 242.0
+margin_right = 1102.0
+margin_bottom = 857.0
 text = "quyweguyqeg f
 sfgys gerugiwifghweuif
 eihgiewighisrhg 
