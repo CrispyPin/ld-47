@@ -6,8 +6,11 @@ var player
 
 func _ready():
 	player = get_node("/root/GameScene/Player")
+	
 
 func _process(_delta):
+	if type == 2:
+		$Sprite/Overlay.visible = true
 	if position.y - player.position.y > 1000:
 		get_parent().get_parent().remove_instance(1, self)
 
