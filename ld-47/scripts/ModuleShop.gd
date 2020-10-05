@@ -10,7 +10,7 @@ var resourceAmount = [0,0,0]
 func addResource(index, amount):
 	resourceAmount[index] += amount
 	updateText()
-	text += str(resourceAmount[index])
+	#text += str(resourceAmount[index])
 
 #0 -resource A
 #1 -resource B
