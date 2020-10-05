@@ -60,16 +60,16 @@ func setModuleBottom(i,b):
 	reassemble()
 
 var flipBit = false;
-func get_input():
-	if Input.is_action_just_pressed("module_debug"):
-		setModuleBottom(0,flipBit)
-		setModuleTop(1,flipBit)
-		setModuleTop(2,flipBit)
-		setModuleTop(3,flipBit)
-		flipBit = !flipBit
+#func get_input():
+#	if Input.is_action_just_pressed("module_debug"):
+#		setModuleBottom(0,flipBit)
+#		setModuleTop(1,flipBit)
+#		setModuleTop(2,flipBit)
+#		setModuleTop(3,flipBit)
+#		flipBit = !flipBit
 		
-func _physics_process(_delta):
-	get_input()
+#func _physics_process(_delta):
+#	get_input()
 	
 func comeBack(t,b):
 	if b:

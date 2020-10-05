@@ -18,7 +18,8 @@ func addResource(index, amount):
 
 var resourceNames = ["A","B","C"]
 
-var moduleNames = ["Speed","RCS","Cannon","Shield"]
+var moduleNames = ["Velociy Amplification","Reaction Control System",
+"Remote Asteroid Disassembler","Kinetic Defence Device"]
 
 var moduleResourceNeeded = []
 
@@ -89,9 +90,10 @@ func updateText():
 	
 	text = ""
 	if bNewModulesAvaliable:
+		text += "[K] to select, [O] to construct\n"
 		text += "Selected module for construction:\n\n"
 		text += moduleNames[moduleIndex]+"\n\n"
-	
+
 	text += "Avaliable Resources:\n\n"
 	
 	for i in range(len(resourceAmount)):
@@ -100,5 +102,9 @@ func updateText():
 			text+=" / " + str(moduleResourceNeeded[moduleIndex][i]) 
 		text+=" units\n"
 	
-	text+="\nWARNING: Any construction will \ndiscard unused resources"
-	text += "\n\nShip Health: " + str(player.health)
+	if bNewModulesAvaliable:
+		text+="\nWARNING: Any construction will \ndiscard unused resources\n"
+	text += "\nShip Health: " + str(player.health)
+	
+	if assembler.moduleFlags[1]:
+		text += "\n\n RCS: [A/D]"
