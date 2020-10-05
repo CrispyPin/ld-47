@@ -2,6 +2,15 @@ extends Sprite
 
 var type = 2
 
+var player
+
+func _ready():
+	player = get_node("/root/GameScene/Player")
+
+func _process(_delta):
+	if position.y - player.position.y > 1000:
+		get_parent().get_parent().remove_instance(0, self)
+
 func _on_Area2D_body_entered(body):
 	if body.name == "Player":
 		var shipass = body.get_node("Ship_assembler")

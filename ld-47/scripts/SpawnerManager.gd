@@ -34,8 +34,9 @@ func add(type, pos = Vector2(), vel = Vector2(), material = 0):
 	_update_lists()
 
 func remove_type(type, i=0):
-	items[type][i].queue_free()
+	var temp = items[type][i]
 	items[type].remove(i)
+	temp.queue_free()
 	_update_lists()
 
 func remove_instance(type, instance):
